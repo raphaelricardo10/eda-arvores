@@ -188,6 +188,39 @@ private:
         return no->esq ? a : b;
     }
 
+    // Exatamente o algoritmo anterior
+    // Apenas mudei o operador
+    int produto_folhas(No *no)
+    {
+
+        // Se for folha, retorna seu valor
+        if (no->e_folha())
+        {
+            return no->valor;
+        }
+
+        int a, b;
+
+        // Visita os filhos esquerdo e direito
+        if (no->esq)
+        {
+            a = produto_folhas(no->esq);
+        }
+        if (no->dir)
+        {
+            b = produto_folhas(no->dir);
+        }
+
+        // Se visitou os dois filhos, retorna o produto
+        if (no->esq && no->dir)
+        {
+            return a * b;
+        }
+
+        // Se visitou um só, retorna o produto dele
+        return no->esq ? a : b;
+    }
+
 public:
     No *raiz;
 
@@ -229,5 +262,10 @@ public:
     int soma_folhas()
     {
         return this->soma_folhas(this->raiz);
+    }
+
+    int produto_folhas()
+    {
+        return this->produto_folhas(this->raiz);
     }
 };
