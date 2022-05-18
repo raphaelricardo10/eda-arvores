@@ -38,6 +38,63 @@ public:
     {
         return !this->dir && !this->esq;
     }
+
+    // Calcula a profundidade
+    // n é uma variável acumuladora
+    int profundidade_relativa(int n)
+    {
+        // Se for folha, retorna o total acumulado
+        if (this->e_folha())
+        {
+            return n;
+        }
+
+        n++;
+        int pe = 0;
+        int pd = 0;
+
+        // Calcula a profundidade dos seus filhos em relação a sí
+        if (this->esq)
+        {
+            pe = this->esq->profundidade_relativa(n);
+        }
+        if (this->dir)
+        {
+            pd = this->dir->profundidade_relativa(n);
+        }
+
+        // Retorna a maior profundidade
+        return pe > pd ? pe : pd;
+    }
+
+    // Calcula a altura de um nó
+    // O nó é considerado raiz e é calculada a profundidade relativa dos filhos à ele
+    int altura()
+    {
+        // A altura de uma folha é zero
+        if (this->e_folha())
+        {
+            return 0;
+        }
+
+        // Profundidade à esquerda
+        int pe = 1;
+        // Profundidade à direita
+        int pd = 1;
+
+        // A altura de um nó é a profundidade dos filhos em relação a ele
+        if (this->esq)
+        {
+            pe = this->esq->profundidade_relativa(pe);
+        }
+        if (this->dir)
+        {
+            pd = this->dir->profundidade_relativa(pd);
+        }
+
+        // Retorna a maior profundidade
+        return pe > pd ? pe : pd;
+    }
 };
 
 class Arvore
