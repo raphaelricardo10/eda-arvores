@@ -28,13 +28,25 @@ int main()
     arvore.pos_ordem();
 
     // Executa a soma das folhas
+    std::cout << "Soma das folhas: ";
     std::cout << arvore.soma_folhas() << std::endl;
+    std::cout << '\n';
 
     // Testa a altura de diferentes nós
+    std::cout << "Altura dos nós:" << std::endl;
     std::cout << raiz->esq->esq->dir->altura() << std::endl;
     std::cout << raiz->esq->esq->altura() << std::endl;
     std::cout << raiz->esq->altura() << std::endl;
     std::cout << raiz->altura() << std::endl;
+    std::cout << '\n';
+
+    // Testa o fator de balanceamento de diferentes nós
+    std::cout << "Fator de balanceamento:" << std::endl;
+    std::cout << raiz->esq->esq->dir->fator_balanceamento() << std::endl;
+    std::cout << raiz->esq->esq->fator_balanceamento() << std::endl;
+    std::cout << raiz->esq->fator_balanceamento() << std::endl;
+    std::cout << raiz->fator_balanceamento() << std::endl;
+    std::cout << '\n';
 
     return 0;
 }
