@@ -27,7 +27,14 @@ int main()
     arvore.em_ordem();
     arvore.pos_ordem();
 
-    std::cout << arvore.soma_folhas();
+    // Executa a soma das folhas
+    std::cout << arvore.soma_folhas() << std::endl;
+
+    // Testa a altura de diferentes nós
+    std::cout << raiz->esq->esq->dir->altura() << std::endl;
+    std::cout << raiz->esq->esq->altura() << std::endl;
+    std::cout << raiz->esq->altura() << std::endl;
+    std::cout << raiz->altura() << std::endl;
 
     return 0;
 }
