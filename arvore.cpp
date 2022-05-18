@@ -48,5 +48,9 @@ int main()
     std::cout << raiz->fator_balanceamento() << std::endl;
     std::cout << '\n';
 
+    std::cout << "Produto das folhas: ";
+    std::cout << arvore.produto_folhas() << std::endl;
+    std::cout << '\n';
+
     return 0;
 }
