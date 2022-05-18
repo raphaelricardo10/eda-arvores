@@ -95,6 +95,25 @@ public:
         // Retorna a maior profundidade
         return pe > pd ? pe : pd;
     }
+
+    int fator_balanceamento()
+    {
+        int he = 0;
+        int hd = 0;
+
+        // Calcula a altura das subárvores direita e esquerda
+        if (this->esq)
+        {
+            he = this->esq->altura();
+        }
+        if (this->dir)
+        {
+            hd = this->dir->altura();
+        }
+
+        // O fator de balanceamento é essa diferença de alturas
+        return he - hd;
+    }
 };
 
 class Arvore
@@ -141,6 +160,7 @@ private:
 
     int soma_folhas(No *no)
     {
+        // Se for folha, retorna seu valor
         if (no->e_folha())
         {
             return no->valor;
@@ -148,6 +168,7 @@ private:
 
         int a, b;
 
+        // Visita os filhos esquerdo e direito
         if (no->esq)
         {
             a = soma_folhas(no->esq);
@@ -157,11 +178,13 @@ private:
             b = soma_folhas(no->dir);
         }
 
+        // Se visitou os dois filhos, retorna a soma
         if (no->esq && no->dir)
         {
             return a + b;
         }
 
+        // Se visitou um só, retorna a soma dele
         return no->esq ? a : b;
     }
 
